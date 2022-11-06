@@ -28,4 +28,10 @@ public class HomeController {
         model.addAttribute("institutionList", institutionService.getAll());
         return "index";
     }
+
+    @RequestMapping("/institutions")
+    public String institutionsList (Model model){
+        model.addAttribute("institutionList", institutionService.getAll());
+        return "institutions";
+    }
 }

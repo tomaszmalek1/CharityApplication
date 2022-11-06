@@ -8,3 +8,6 @@ INSERT INTO charity_donation.institutions (description, name) VALUES ('Pomoc dzi
 INSERT INTO charity_donation.institutions (description, name) VALUES ('Pomoc wybudzaniu dzieci ze śpiączki', 'A kogo');
 INSERT INTO charity_donation.institutions (description, name) VALUES ('Pomoc osobom znajdującym się w trudnej sytuacji życiowej', 'Dla dzieci');
 INSERT INTO charity_donation.institutions (description, name) VALUES ('Pomoc dla osób nie posiadających miejsca zamieszkania','Bez domu');
+
+INSERT INTO charity_donation.role (name) VALUES ('ROLE_USER');
+INSERT INTO charity_donation.role (name) VALUES ('ROLE_ADMIN');

@@ -35,7 +35,6 @@
                     <div class="form-group form-group--checkbox">
                         <label>
                             <form:checkbox path="categoryList" value="${category.id}"/>
-
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
@@ -72,7 +71,6 @@
                 <c:forEach var="institution" items="${institutions}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                                <%--                            <form:input type="radio" name="organization" value="${institution.id}" path="institution"/><form:errors path="institution" cssClass="errors"/>--%>
                             <form:radiobutton path="institution" value="${institution.id}"/>
 
                             <span class="checkbox radio"></span>
