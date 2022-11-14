@@ -30,8 +30,23 @@ public class HomeController {
     }
 
     @RequestMapping("/institutions")
-    public String institutionsList (Model model){
+    public String institutionsList(Model model) {
         model.addAttribute("institutionList", institutionService.getAll());
         return "institutions";
+    }
+
+    @RequestMapping("/steps")
+    public String steps() {
+        return "steps";
+    }
+
+    @RequestMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @RequestMapping("/about")
+    public String about(){
+        return "about";
     }
 }

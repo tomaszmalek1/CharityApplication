@@ -3,148 +3,93 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="appHeader.jsp"/>
 
-<section class="form--steps">
-    <div class="form--steps-instructions">
-        <div class="form--steps-container">
-            <h3>Ważne!</h3>
-            <p data-step="1" class="active">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="2">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="3">
-                Wybierz jedną, do
-                której trafi Twoja przesyłka.
-            </p>
-            <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
+
+<section class="stats">
+    <div class="container container--85">
+        <div class="stats--item">
+            <em>${quantitySum}</em>
+
+            <h3>Oddanych worków</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
+                tempora!</p>
+        </div>
+
+        <div class="stats--item">
+            <em>${donationsCount}</em>
+            <h3>Przekazanych darów</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
+                quam.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="steps">
+    <h2>Wystarczą 4 proste kroki</h2>
+
+    <div class="steps--container">
+        <div class="steps--item">
+            <span class="icon icon--hands"></span>
+            <h3>Wybierz rzeczy</h3>
+            <p>ubrania, zabawki, sprzęt i inne</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--arrow"></span>
+            <h3>Spakuj je</h3>
+            <p>skorzystaj z worków na śmieci</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--glasses"></span>
+            <h3>Zdecyduj komu chcesz pomóc</h3>
+            <p>wybierz zaufane miejsce</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--courier"></span>
+            <h3>Zamów kuriera</h3>
+            <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
+</section>
 
-    <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/4</div>
+<section class="about-us">
+    <div class="about-us--text">
+        <h2>O nas</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
+            optio esse quisquam illo omnis.</p>
+        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+    </div>
+    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    </div>
+</section>
 
-        <%--@elvariable id="donation" type=""--%>
-        <form:form action="/home" method="post" modelAttribute="donation">
-            <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active">
-                <h3>Zaznacz co chcesz oddać:</h3>
-                <c:forEach items="${categories}" var="category">
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <form:checkbox path="categoryList" value="${category.id}"/>
-                            <span class="checkbox"></span>
-                            <span class="description">${category.name}</span>
-                        </label>
-                    </div>
-                </c:forEach>
-                <form:errors path="categoryList" cssStyle="color: red; font-size: large"/>
-                <div class="form-group form-group--buttons">
-                    <button type="submit" class="btn next-step">Dalej</button>
-                </div>
-            </div>
+<section class="help">
+    <h2>Komu pomagamy?</h2>
 
-            <!-- STEP 2 -->
-            <div data-step="2">
-                <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+    <!-- SLIDE 1 -->
+    <div class="help--slides active" data-id="1">
+        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
+            Możesz sprawdzić czym się zajmują.</p>
 
-                <div class="form-group form-group--inline">
-                    <label>
-                        Liczba 60l worków:
-                        <form:input type="number" name="bags" step="1" min="1" path="quantity"/><form:errors
-                            path="quantity" cssStyle="color: red"/>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
-                </div>
-            </div>
-
-
-            <!-- STEP 4 -->
-            <div data-step="3">
-                <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-                <c:forEach var="institution" items="${institutions}">
-                    <div class="form-group form-group--checkbox">
-                        <label>
-                            <form:radiobutton path="institution" value="${institution.id}"/>
-
-                            <span class="checkbox radio"></span>
-                            <span class="description">
-                  <div class="title">Fundacja “${institution.name}”</div>
-                  <div class="subtitle">
-                    Cel i misja: ${institution.description}.
-                  </div>
-                </span>
-                        </label>
-                    </div>
-                </c:forEach>
-                <form:errors path="institution" cssStyle="color: red; font-size: large"/>
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
-                </div>
-            </div>
-
-            <!-- STEP 5 -->
-            <div data-step="4">
-                <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
-
-                <div class="form-section form-section--columns">
-                    <div class="form-section--column">
-                        <h4>Adres odbioru</h4>
-                        <div class="form-group form-group--inline">
-                            <label> Ulica <form:input type="text" name="street" path="street"/></label>
-                            <form:errors path="street" cssClass="errors" cssStyle="color: red"/>
+        <ul class="help--slides-items">
+            <c:forEach var="institution" items="${institutionList}" varStatus="count">
+                <c:choose>
+                    <c:when test="${count.count %2== '1'}">
+                        <li>
+                        <div class="col">
+                            <div class="title">Fundacja "${institution.name}"</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}.</div>
                         </div>
-                        <div class="form-group form-group--inline">
-                            <label> Miasto <form:input type="text" name="city" path="city"/></label>
-                            <form:errors path="city" cssStyle="color: red"/>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="col">
+                            <div class="title">Fundacja "${institution.name}"</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}.</div>
                         </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Kod pocztowy <form:input type="text" name="postcode" path="zipCode"/></label>
-                            <form:errors path="zipCode" cssClass="errors" cssStyle="color: red"/>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Numer telefonu <form:input type="phone" name="phone" path="phoneNumber"/></label>
-                            <form:errors path="phoneNumber" cssClass="errors" cssStyle="color: red"/>
-                        </div>
-                    </div>
-
-                    <div class="form-section--column">
-                        <h4>Termin odbioru</h4>
-                        <div class="form-group form-group--inline">
-                            <label> Data <form:input type="date" name="data" path="pickUpDate"/></label>
-                            <form:errors path="pickUpDate" cssClass="errors" cssStyle="color: red"/>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label> Godzina <form:input type="time" name="time" path="pickUpTime"/></label>
-                            <form:errors path="pickUpTime" cssClass="errors" cssStyle="color: red"/>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label>
-                                Uwagi dla kuriera
-                                <form:textarea name="more_info" rows="5" path="pickUpComment"/></label>
-                            <form:errors path="pickUpComment" cssClass="errors" cssStyle="color: red"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Dalej</button>
-                </div>
-            </div>
-        </form:form>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </ul>
     </div>
 </section>
 <jsp:include page="appFooter.jsp"/>
