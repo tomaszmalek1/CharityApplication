@@ -39,8 +39,9 @@ public class Donation {
     @NotNull(message = "Nie podano godziny odbioru")
     private LocalTime pickUpTime;
     private String pickUpComment;
-
-    public Donation(long id, int quantity, List<Category> categoryList, Institution institution, String street, String city, String zipCode, String phoneNumber, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment) {
+    @ManyToOne
+    private User user;
+    public Donation(long id, int quantity, List<Category> categoryList, Institution institution, String street, String city, String zipCode, String phoneNumber, LocalDate pickUpDate, LocalTime pickUpTime, String pickUpComment, User user) {
         this.id = id;
         this.quantity = quantity;
         this.categoryList = categoryList;
@@ -52,6 +53,7 @@ public class Donation {
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.pickUpComment = pickUpComment;
+        this.user = user;
     }
 
     public Donation() {
@@ -143,5 +145,13 @@ public class Donation {
 
     public void setPickUpComment(String pickUpComment) {
         this.pickUpComment = pickUpComment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

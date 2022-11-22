@@ -11,11 +11,10 @@
             <sec:authorize access="isAuthenticated()">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="<sec:authentication property="principal.name"/>"/></div>
             <div class="form-group form-group--50"><input type="text" name="surname" placeholder="<sec:authentication property="principal.lastName"/>"/></div>
-
             <div class="form-group form-group--50"><input type="email" name="email" placeholder="<sec:authentication property="principal.email"/>"/></div>
 
-            <div class="form-group form-group--50"><textarea name="text" placeholder="Wiadomość" rows="1"></textarea>
-            </div>
+            <div class="form-group form-group--50"><textarea name="text" placeholder="Wiadomość" rows="1"></textarea></div>
+
             <button class="btn" type="submit">Wyślij</button>
             </sec:authorize>
         </form:form>
@@ -30,8 +29,6 @@
         </div>
     </div>
 </footer>
-
-<%--<script src="js/app.js"></script>--%>
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>
 </html>

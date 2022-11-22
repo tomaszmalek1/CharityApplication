@@ -1,74 +1,71 @@
 package pl.coderslab.charity.controller;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 @Controller
 public class DonationController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final CategoryService categoryService;
+    private final DonationRepository donationRepository;
 
-    public DonationController(InstitutionService institutionService, DonationService donationService, CategoryService categoryService) {
+    public DonationController(InstitutionService institutionService, DonationService donationService, CategoryService categoryService, DonationRepository donationRepository) {
         this.institutionService = institutionService;
         this.donationService = donationService;
         this.categoryService = categoryService;
+        this.donationRepository = donationRepository;
     }
 
     @GetMapping("/home")
     public String homeAction(Model model) {
 //        model.addAttribute("user", getPrincipal());
         int quantitySum = 0;
-        for (Donation donation : donationService.getAll()) {
+        for (Donation donation : donationRepository.getDonationsByUserId(getPrincipal().getId())) {
             quantitySum += donation.getQuantity();
         }
-        model.addAttribute("donationsCount", donationService.getAll().size());
+        model.addAttribute("donationsCount", donationRepository.getDonationsByUserId(getPrincipal().getId()).size());
         model.addAttribute("quantitySum", quantitySum);
         model.addAttribute("institutionList", institutionService.getAll());
         return "app/appHome";
     }
 
-//    private User getPrincipal(){
-//        User user = null;
-//        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
-//            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        }
-//        return user;
-//    }
+    private User getPrincipal(){
+        User user = null;
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
+            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        return user;
+    }
 
     @RequestMapping("/appInstitutions")
-    public String appInstitutions(Model model){
+    public String appInstitutions(Model model) {
         model.addAttribute("institutionList", institutionService.getAll());
         return "app/appInstitutions";
     }
 
     @RequestMapping("/appContact")
-    public String appContact(){
+    public String appContact() {
         return "app/appContact";
     }
 
     @RequestMapping("/appAbout")
-    public String appAbout(){
+    public String appAbout() {
         return "app/appAbout";
     }
 
     @RequestMapping("/appSteps")
-    public String appSteps(){
+    public String appSteps() {
         return "app/appSteps";
     }
 
@@ -79,12 +76,12 @@ public class DonationController {
         return "app/appStep1";
     }
 
-    @PostMapping("step1")
+    @PostMapping("/step1")
     public String step1() {
         return "redirect:step2";
     }
 
-    @GetMapping("step2")
+    @GetMapping("/step2")
     public String step2Form() {
         return "app/appStep2";
     }

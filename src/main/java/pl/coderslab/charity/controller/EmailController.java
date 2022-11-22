@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.EmailSenderService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -18,10 +19,13 @@ public class EmailController {
     private DonationService donationService;
     private InstitutionService institutionService;
 
-    public EmailController(EmailSenderService emailSenderService, DonationService donationService, InstitutionService institutionService) {
+    private DonationRepository donationRepository;
+
+    public EmailController(EmailSenderService emailSenderService, DonationService donationService, InstitutionService institutionService, DonationRepository donationRepository) {
         this.emailSenderService = emailSenderService;
         this.donationService = donationService;
         this.institutionService = institutionService;
+        this.donationRepository = donationRepository;
     }
 
     @GetMapping("/sendEmail")
@@ -40,7 +44,6 @@ public class EmailController {
                 emailSenderService.sendEmail("portfoliolabtest@gmail.com", "Formularz kontaktowy - zapytanie", message);
             } catch (MessagingException e) {
                 model.addAttribute("messageError", "Błąd wysyłania wiadomości");
-//                e.printStackTrace();
                 return "index";
             }
         } else {
@@ -57,8 +60,7 @@ public class EmailController {
         return "messageConfirmation";
     }
 
-
-        private User getPrincipal(){
+    private User getPrincipal() {
         User user = null;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
             user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -82,15 +84,14 @@ public class EmailController {
                 emailSenderService.sendEmail("portfoliolabtest@gmail.com", "Formularz kontaktowy - zapytanie", message);
             } catch (MessagingException e) {
                 model.addAttribute("messageError", "Błąd wysyłania wiadomości");
-//                e.printStackTrace();
                 return "app/appHome";
             }
         } else {
             int quantitySum = 0;
-            for (Donation donation : donationService.getAll()) {
+            for (Donation donation : donationRepository.getDonationsByUserId(getPrincipal().getId())) {
                 quantitySum += donation.getQuantity();
             }
-            model.addAttribute("donationsCount", donationService.getAll().size());
+            model.addAttribute("donationsCount", donationRepository.getDonationsByUserId(getPrincipal().getId()).size());
             model.addAttribute("quantitySum", quantitySum);
             model.addAttribute("institutionList", institutionService.getAll());
             model.addAttribute("messageError", "Nie podano wiadomości");

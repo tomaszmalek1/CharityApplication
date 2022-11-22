@@ -36,4 +36,7 @@ public class JpaDonationService implements DonationService {
     public Optional<Donation> getById(long id) {
         return donationRepository.findById(id);
     }
+
+//    public List<Donation> getDonationListByUserId(int userId){
+//        donationRepository.getById(userId)}
 }
