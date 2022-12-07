@@ -3,15 +3,20 @@ package pl.coderslab.charity.controller;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import pl.coderslab.charity.model.Category;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class DonationController {
@@ -40,7 +45,7 @@ public class DonationController {
         return "app/appHome";
     }
 
-    private User getPrincipal(){
+    private User getPrincipal() {
         User user = null;
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof User) {
             user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,53 +74,88 @@ public class DonationController {
         return "app/appSteps";
     }
 
-    @GetMapping("/step1")
-    public String step1Form(Model model) {
+
+    //Próba zrobienia formularze wieloetapowego na JS
+    @GetMapping("/stepsForm")
+    public String stepsForm(Model model) {
         model.addAttribute("donation", new Donation());
         model.addAttribute("categories", categoryService.getAll());
-        return "app/appStep1";
+        model.addAttribute("institutionList", institutionService.getAll());
+        return "app/appStepsForm";
     }
 
-    @PostMapping("/step1")
-    public String step1() {
-        return "redirect:step2";
+    @PostMapping("/stepsForm")
+    public String stepsFormPost(@Valid Donation donation, BindingResult result){
+        if (result.hasErrors()){
+            return "app/appError";
+        }
+        donationService.save(donation);
+        return "app/appConfirmation";
     }
 
-    @GetMapping("/step2")
-    public String step2Form() {
-        return "app/appStep2";
-    }
 
-//    @PostMapping("/home")
-//    public String home(@Valid Donation donation, BindingResult result, HttpSession ses, Model model) {
-//        if (result.hasErrors()) {
-//            model.addAttribute("categories", categoryService.getAll());
-//            model.addAttribute("institutions", institutionService.getAll());
-//            return "app/appHome";
+
+
+
+
+
+
+
+
+
+
+
+    //Zakomentowany obszar to próba zrobienia formularze wieloetapowego tyko na Javie. Skończyłem na metodzie @GetMapping("/summary")
+//    @GetMapping("/step1")
+//    public String step1Form(Model model) {
+//        model.addAttribute("donation", new Donation());
+//        model.addAttribute("categories", categoryService.getAll());
+//        return "app/appStep1";
+//    }
+//
+//    @PostMapping("/step1")
+//    public String step1(@ModelAttribute Donation donation, HttpSession ses, Model model) {
+//        List<Category> categoryList = donation.getCategoryList();
+//        if (!categoryList.isEmpty()) {
+//            ses.setAttribute("categories", categoryList);
+//            return "app/appStep2";
 //        } else {
-//            ses.setAttribute("donation", donation);
-//            return "redirect:/summary";
+//            model.addAttribute("donation", new Donation());
+//            model.addAttribute("categories", categoryService.getAll());
+//            model.addAttribute("categoryListError", "Wybierz kategorię");
+//            return "app/appStep1";
 //        }
+//    }
+//
+//    @PostMapping("/step2")
+//    public String step2(@ModelAttribute Donation donation, HttpSession ses, Model model) {
+//        ses.setAttribute("quantity", donation.getQuantity());
+//        model.addAttribute("institutionList", institutionService.getAll());
+//        return "app/appStep3";
+//    }
+//
+//    @PostMapping("/step3")
+//    public String step3(@ModelAttribute Donation donation, HttpSession ses) {
+//        ses.setAttribute("instytution", donation.getInstitution());
+//        return "app/appStep4";
+//    }
+//
+//    @PostMapping("/step4")
+//    public String step4(@ModelAttribute Donation donation, HttpSession ses, Model model) {
+//        ses.setAttribute("street", donation.getStreet());
+//        ses.setAttribute("city", donation.getCity());
+//        ses.setAttribute("postCode", donation.getZipCode());
+//        ses.setAttribute("phoneNumber", donation.getPhoneNumber());
+//        ses.setAttribute("date", donation.getPickUpDate());
+//        ses.setAttribute("time", donation.getPickUpTime());
+//        ses.setAttribute("message", donation.getPickUpComment());
+//        return "redirect:/summary";
 //    }
 //
 //    @GetMapping("/summary")
 //    public String summary(Model model, HttpSession ses) {
-//        Donation donation = (Donation) ses.getAttribute("donation");
-//        if (donation == null) {
-//            return "redirect:/home";
-//        } else {
-//            model.addAttribute("bags", donation.getQuantity());
-//            model.addAttribute("categories", donation.getCategoryList());
-//            model.addAttribute("street", donation.getStreet());
-//            model.addAttribute("city", donation.getCity());
-//            model.addAttribute("postCode", donation.getZipCode());
-//            model.addAttribute("phone", donation.getPhoneNumber());
-//            model.addAttribute("data", donation.getPickUpDate());
-//            model.addAttribute("time", donation.getPickUpTime());
-//            model.addAttribute("moreInfo", donation.getPickUpComment());
-//            model.addAttribute("institution", donation.getInstitution());
-//            return "app/appSummary";
-//        }
+//        model.addAttribute("categories", ses.getAttribute("categories"));
+//        return "app/appSummary";
 //    }
 //
 //    @PostMapping("/summary")

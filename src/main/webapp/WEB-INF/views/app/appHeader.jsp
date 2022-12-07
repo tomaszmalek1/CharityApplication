@@ -35,7 +35,7 @@
             <li><a href="/appSteps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="/appAbout" class="btn btn--without-border">O nas</a></li>
             <li><a href="/appInstitutions" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="/step1" class="btn btn--without-border">Przekaż dary</a></li>
+            <li><a href="/stepsForm" class="btn btn--without-border">Przekaż dary</a></li>
             <li><a href="/appContact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>

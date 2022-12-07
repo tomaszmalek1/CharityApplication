@@ -11,20 +11,20 @@
                 Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
                 wiedzieć komu najlepiej je przekazać.
             </p>
-<%--            <p data-step="2">--%>
-<%--                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy--%>
-<%--                wiedzieć komu najlepiej je przekazać.--%>
-<%--            </p>--%>
-<%--            <p data-step="3">--%>
-<%--                Wybierz jedną, do--%>
-<%--                której trafi Twoja przesyłka.--%>
-<%--            </p>--%>
-<%--            <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>--%>
+            <p data-step="2">
+                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
+                wiedzieć komu najlepiej je przekazać.
+            </p>
+            <p data-step="3">
+                Wybierz jedną, do
+                której trafi Twoja przesyłka.
+            </p>
+            <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
         </div>
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/4</div>
+<%--        <div class="form--steps-counter">Krok <span>1</span>/4</div>--%>
 
         <%--@elvariable id="donation" type=""--%>
         <form:form action="/step1" method="post" modelAttribute="donation">
@@ -40,7 +40,8 @@
                         </label>
                     </div>
                 </c:forEach>
-                <form:errors path="categoryList" cssStyle="color: red; font-size: large"/>
+<%--                <form:errors path="categoryList" cssStyle="color: red; font-size: large"/>--%>
+                ${categoryListError}
                 <div class="form-group form-group--buttons">
                     <button type="submit" class="btn">Dalej</button>
                 </div>
