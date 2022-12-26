@@ -22,21 +22,21 @@ Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać n
 - Wyświetlanie "Mojego profilu"
 
 ## Makiety:
-- Index:
+**- Index:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/index.png">
-- Rejestracja:
+**- Rejestracja:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/register.png">
-- Logowanie:
+**- Logowanie:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/login.png">
-- Form 1:
+**- Form 1:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form1.png">
-- Form 2:
+**- Form 2:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form2.png">
-- Form 3:
+**- Form 3:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form3.png">
-- Form 4:
+**- Form 4:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form4.png">
-- Form 5:
+**- Form 5:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form5.png">
-- Form 6:
+**- Form 6:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/form6.png">
