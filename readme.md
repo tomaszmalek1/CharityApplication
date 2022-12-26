@@ -16,12 +16,11 @@ Do zrobienia:
 
 Makiety:
 - Index:
-![](./resources/images/index.png)
-
+<img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/index.png">
 - Rejestracja:
-![](./resources/images/register.png)
+
 - Logowanie:
-![](./resources/images/login.png)
+
 - Form 1:
 
 - Form 2:
