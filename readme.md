@@ -1,10 +1,35 @@
+Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać niepotrzebne rzeczy zaufanym instytucjom.
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+Użyte technologie
+- Spring Boot
+- Spring Form
+- Spring Security
+- Hibernate
+- Spring Data JPA
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
+Lista funkcjonalności: 
+- aaa
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+Do zrobienia: 
+- Walidacja (Wyświetlanie odpowiednego komunikatu w przypadku błędnego uzupełnienia formularza dodawania darów)
+
+
+Makiety:
+- Index:
+![](../../../Downloads/index.png)
+
+- Rejestracja:
+![](../../../Downloads/register.png)
+- Logowanie:
+![](../../../Downloads/login.png)
+- Form 1:
+
+- Form 2:
+
+- Form 3:
+
+- Form 4:
+
+- Form 5:
+
+- Form 6:
