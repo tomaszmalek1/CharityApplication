@@ -16,12 +16,12 @@ Do zrobienia:
 
 Makiety:
 - Index:
-![](../../../Downloads/index.png)
+![](./images/index.png)
 
 - Rejestracja:
-![](../../../Downloads/register.png)
+![](./images/register.png)
 - Logowanie:
-![](../../../Downloads/login.png)
+![](./images/login.png)
 - Form 1:
 
 - Form 2:
