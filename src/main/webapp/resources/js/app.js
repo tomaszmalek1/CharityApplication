@@ -158,7 +158,7 @@
 //             // function checkboxTest() {
 //             //     const checkbox = document.querySelector("form .checkbox")
 //             //     if (checkbox.checked == false) {
-//             //         alert("Nie wybrano kategorii")
+//             //         alert("Dupa")
 //             //     }
 //             // }
 //
@@ -188,20 +188,19 @@
 // });
 
 
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     /**
      * Data tables
      */
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#table_id').DataTable();
-    } );
+    });
 
     /**
      * styling of Spring Form checkboxes
      */
-    $('.checkboxMargin').unbind('click').bind('click', function() {
+    $('.checkboxMargin').unbind('click').bind('click', function () {
         if ($(this).hasClass('active')) {
             $(this).css('background-color', 'white');
             $(this).removeClass('active');
@@ -215,15 +214,15 @@ document.addEventListener("DOMContentLoaded", function() {
     $('.summaryBtn').click(function () {
 
         var thingsJoined = "";
-        $('input[type=checkbox]:checked').each(function() {
-            thingsJoined +=($(this).attr('class').replace('things ','')) + "<br>";
+        $('input[type=checkbox]:checked').each(function () {
+            thingsJoined += ($(this).attr('class').replace('things ', '')) + "<br>";
         })
 
         $('#summaryThings').html(thingsJoined);
 
         $('#summaryQuantity').text($('.quantity').val());
 
-        var inst = $('input[type=radio]:checked').attr('class').replace('institution ','');
+        var inst = $('input[type=radio]:checked').attr('class').replace('institution ', '');
         $('#summaryInstitution').text(inst);
         //
         $('#summaryStreet').text($('.street').val());
@@ -244,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     $(".quantity").attr({
-        "type" : "number",
+        "type": "number",
     });
 
     /**
@@ -312,13 +311,14 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
+
     document.querySelectorAll(".form-group--dropdown select").forEach(el => {
         new FormSelect(el);
     });
     /**
      * Hide elements when clicked on document
      */
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
         const target = e.target;
         const tagName = target.tagName;
 
@@ -395,9 +395,15 @@ document.addEventListener("DOMContentLoaded", function() {
          */
         updateForm() {
             this.$step.innerText = this.currentStep;
+            /////////////////////////////////////////////////////////
+
+
 
             // TODO: Validation
 
+
+
+            /////////////////////////////////////////////////////////
             this.slides.forEach(slide => {
                 slide.classList.remove("active");
 
@@ -413,8 +419,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
     }
-    const form = document.querySelector(".form--steps");
-    if (form !== null) {
-        new FormSteps(form);
+
+    const
+        form = document.querySelector(".form--steps");
+
+    if (form
+
+        !==
+        null
+    ) {
+        new
+
+        FormSteps(form);
     }
-});
+})
+;

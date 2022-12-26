@@ -41,7 +41,7 @@ public class EmailController {
                 + "Wiadomość: " + text;
         if (!name.isEmpty() && !surname.isEmpty() && !email.isEmpty() && !text.isEmpty()) {
             try {
-                emailSenderService.sendEmail("portfoliolabtest@gmail.com", "Formularz kontaktowy - zapytanie", message);
+                emailSenderService.sendEmail("kontotestoweportfolio@gmail.com", "Formularz kontaktowy - zapytanie", message);
             } catch (MessagingException e) {
                 model.addAttribute("messageError", "Błąd wysyłania wiadomości");
                 return "index";
@@ -81,7 +81,7 @@ public class EmailController {
                 + "Wiadomość: " + text;
         if (!text.isEmpty()) {
             try {
-                emailSenderService.sendEmail("portfoliolabtest@gmail.com", "Formularz kontaktowy - zapytanie", message);
+                emailSenderService.sendEmail("kontotestoweportfolio@gmail.com", "Formularz kontaktowy - zapytanie", message);
             } catch (MessagingException e) {
                 model.addAttribute("messageError", "Błąd wysyłania wiadomości");
                 return "app/appHome";

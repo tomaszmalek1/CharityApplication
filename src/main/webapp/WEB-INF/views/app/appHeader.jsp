@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
@@ -22,10 +22,12 @@
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
-                    <li><form action="<c:url value="/logout"/>" method="post">
-                        <input class="fa fa-id-badge" type="submit" value="Wyloguj">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </form></li>
+                    <li><a>
+                        <form action="<c:url value="/logout"/>" method="post">
+                            <input type="submit" value="Wyloguj">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                    </a></li>
                 </ul>
             </li>
         </ul>
@@ -43,7 +45,7 @@
     <div class="slogan container container--90">
         <div class="slogan--item">
             <h1>
-                Oddaj rzeczy, których już nie chcesz<br />
+                Oddaj rzeczy, których już nie chcesz<br/>
                 <span class="uppercase">potrzebującym</span>
             </h1>
 
