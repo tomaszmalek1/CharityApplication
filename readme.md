@@ -7,13 +7,14 @@ Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać n
 - Spring Form
 - Spring Security
 - Hibernate
+- Java Script
 - Spring Data JPA
 - MySql
 
 ## Lista funkcjonalności: 
 - Rejestracja
 - Logowanie
-- Wysyłani wiadomości e-mail
+- Wysyłanie wiadomości e-mail
 - Dodawanie darów (Formularz wieloetapowy)
 
 ## Do zrobienia: 
