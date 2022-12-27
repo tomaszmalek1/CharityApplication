@@ -24,7 +24,9 @@ Celem projektu jest stworzenie miejsca, w którym każdy będzie mógł oddać n
 
 ## Makiety:
 **- Index:**
-<img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/index.png?raw=true" width="50%" />
+<p float="left">
+<img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/index.png" width="50%" />
+</p>
 **- Rejestracja:**
 <img src="https://github.com/tomaszmalek1/Portfolio_Lab/blob/main/src/main/webapp/resources/images/register.png">
 **- Logowanie:**
