@@ -75,7 +75,6 @@ public class DonationController {
     }
 
 
-    //Próba zrobienia formularze wieloetapowego na JS
     @GetMapping("/stepsForm")
     public String stepsForm(Model model) {
         model.addAttribute("donation", new Donation());
